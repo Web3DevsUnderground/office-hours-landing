@@ -10,7 +10,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://officehours.web3devs.org">
 <meta name="theme-color" content="#0a0a0a">
-<!-- Office-Hours-Landing-Page-v2.5 · 13 Sep 2026 · Web3 Devs Underground / Masterkey VC.
+<!-- Office-Hours-Landing-Page-v2.7 · 13 Sep 2026 · Web3 Devs Underground / Masterkey VC.
      Edit only: the HOSTS list and the two flags at the top of the <script>. Photos + logo are embedded (no external assets). -->
 <style>
 :root{
@@ -76,6 +76,7 @@ section{padding:48px 0;border-top:1px solid var(--ring)}
 .host .who{font-size:14.5px;color:var(--ink2);line-height:1.5}
 .host .who b{color:var(--ink);font-weight:600}
 .host .hrs{font-size:13px;color:var(--muted)}
+.host .note{font-size:13.5px;color:var(--ink2);background:rgba(255,255,255,.04);border-left:3px solid var(--accent);padding:8px 10px;border-radius:6px}
 .host .hrs b{color:var(--accent2);font-weight:600}
 .host .apply{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;background:var(--accent);color:#fff;font-weight:700;border-radius:10px;padding:12px 16px;font-size:15px;min-height:46px}
 .host .apply:hover{text-decoration:none;filter:brightness(1.08)}
@@ -173,7 +174,7 @@ footer .links a{color:var(--ink2)}
 <section id="hosts">
   <div class="wrap">
     <h2>The hosts</h2>
-    <p class="sub" id="hostsSub">Founders and operators who built companies you use, plus speakers from Monday's Mid-Chain Conference in town a day early. More hosts announced as they confirm. One rule for every session: real answers, zero pitching.</p>
+    <p class="sub" id="hostsSub">Founders and operators who built companies you use, plus speakers from Monday's Mid-Chain Conference in town a day early. Each confirmed host has their own request form — pick a slot, say what you want to discuss, the host decides. More hosts announced as they confirm. One rule for every session: real answers, zero pitching.</p>
     <div class="hosts" id="hostGrid"></div>
     <p class="small" style="margin-top:18px">Want to hold office hours yourself? You should be the kind of person people queue to ask. <a href="https://masterkey.fillout.com/t/eB9yeg8yFrus">Apply to host (3 minutes) →</a></p>
   </div>
@@ -230,7 +231,7 @@ footer .links a{color:var(--ink2)}
       <a href="mailto:web3devsunderground@gmail.com">Contact</a>
     </div>
     <div class="small"><a href="https://www.mid-chain.com/">Mid-Chain De-Fi Conference — mid-chain.com</a> · <a href="https://luma.com/rzaklefv">conference registration</a> · Office Hours Day is produced by Web3 Devs Underground, powered by Masterkey VC.</div>
-    <!-- v2.5 publish gate: a host card renders only when published:true (= host confirmed text + Consent ✓ in Notion). Flip APPLICATIONS_OPEN to true when ≥4 hosts are Approved+Published on officehours.web3devs.org. -->
+    <!-- v2.7 publish gate: a host card renders only when published:true (= host confirmed text + Consent ✓ in Notion). Flip APPLICATIONS_OPEN to true when ≥4 hosts are Approved+Published on officehours.web3devs.org. -->
   </div>
 </footer>
 
@@ -254,17 +255,17 @@ const HOSTS = [
     tags: ["Cryptography","ZK","L2 / Rollups","Research"],
     who: "Technical founders working on cryptography, ZK proofs, L2s and rollups.",
     hours: "Sun 25 Oct · 14:00–16:00",
-    linkedin: "", x: "https://x.com/elibensasson", photo: "", initials: "EB", published: true, bookingUrl: "" },
+    linkedin: "https://www.linkedin.com/in/eli-ben-sasson-9b7959/", x: "https://x.com/elibensasson", photo: "https://pbs.twimg.com/profile_images/2064992619231395840/m19ef26w_400x400.jpg", initials: "EB", published: true, bookingUrl: "/apply?host=eli-ben-sasson" },
   { name: "Saul Rejwan", title: "Managing Partner, Masterkey VC · Founder, Web3 Devs Underground",
     tags: ["Product","Go-to-market","Fundraising","Career advice","Entrepreneurship"],
     who: "Founders, builders and any member looking for advice — or who can teach him something new.",
     hours: "Sun 25 Oct · 14:00–16:00 (and around lunch)",
-    linkedin: "https://www.linkedin.com/in/saul-shauli-rejwan/", photo: PHOTOS["Shauli Rejwan"], initials: "SR", published: true, bookingUrl: "" },
+    linkedin: "https://www.linkedin.com/in/saul-shauli-rejwan/", photo: PHOTOS["Shauli Rejwan"], initials: "SR", published: true, bookingUrl: "/apply?host=saul-rejwan" },
   { name: "Dror Avieli", title: "Chief Customer Officer & Head of Americas, Elliptic · ex-ConsenSys",
     tags: ["AI x Crypto","Product","Go-to-market","Hiring","Entrepreneurship"],
     who: "Founders building customer success and post-sale in web3 — how to scale it. Also go-to-market and hiring.",
-    hours: "Sun 25 Oct · 13:00–14:00 · video possible",
-    linkedin: "https://www.linkedin.com/in/droravieli", photo: PHOTOS["Dror Avieli"], initials: "DA", published: true, bookingUrl: "" },
+    hours: "Sun 25 Oct · hours being confirmed · video possible",
+    linkedin: "https://www.linkedin.com/in/droravieli", photo: PHOTOS["Dror Avieli"], initials: "DA", published: true, bookingUrl: "/apply?host=dror-avieli" },
   { name: "Idan Ofrat", title: "Co-founder & Chief Product Officer, Fireblocks",
     tags: ["Product","Security","Go-to-market","Fundraising","Hiring"],
     who: "Founders building custody, wallets or institutional crypto infrastructure — product, security and scaling decisions.",
@@ -272,7 +273,9 @@ const HOSTS = [
   { name: "Arkady Karpman", title: "Co-founder & CTO, Rapyd",
     tags: ["Infra / DevOps","Hiring","Product","Security","Go-to-market"],
     who: "Engineers and founders scaling payments or fintech infrastructure past the first million transactions.",
-    linkedin: "https://www.linkedin.com/in/arkady-karpman-4904406/", photo: PHOTOS["Arkady Karpman"], initials: "AK", published: false, bookingUrl: "" },
+    hours: "Sun 25 Oct · hours to be announced",
+    note: "Arkady has confirmed. Registration for his sessions opens soon.",
+    linkedin: "https://www.linkedin.com/in/arkady-karpman-4904406/", photo: PHOTOS["Arkady Karpman"], initials: "AK", published: true, bookingUrl: "" },
   { name: "Adam Levi, Ph.D.", title: "Co-founder, xStocks & Backed Finance (Kraken) · Co-founder & former CTO, DAOstack",
     tags: ["Product","Go-to-market","Fundraising","Smart contracts","Research"],
     who: "Founders tokenizing real-world assets — from the legal wrapper to onchain liquidity.",
@@ -285,22 +288,23 @@ const HOSTS = [
 /* ===================================== */
 const live = HOSTS.filter(h => h.published);
 const placeholders = Math.max(0, Math.min(3, HOSTS.length - live.length));
-/* 13 Sep: 3 hosts confirmed via the host form (consent ✓) → published. Others stay hidden until they submit. */
+/* 13 Sep: 3 hosts confirmed via the host form (consent ✓) → published with booking. Arkady confirmed verbally (Amit, 13 Sep) → published, booking opens when his form is in. Others stay hidden until they submit. */
 const cards = live.map(h => `
   <div class="host">
-    <span class="badge${(APPLICATIONS_OPEN || h.bookingUrl) ? " open" : ""}">${(APPLICATIONS_OPEN || h.bookingUrl) ? "Applications open" : "Confirmed · applications open soon"}</span>
+    <span class="badge${(APPLICATIONS_OPEN || h.bookingUrl) ? " open" : ""}">${(APPLICATIONS_OPEN || h.bookingUrl) ? "Applications open" : "Confirmed · registration opens soon"}</span>
     <div class="top">
-      <div class="avatar">${h.photo ? `<img src="${h.photo}" alt="${h.name}" loading="lazy">` : h.initials}</div>
+      <div class="avatar">${h.photo ? `<img src="${h.photo}" alt="${h.name}" loading="lazy" onerror="this.parentNode.textContent='${h.initials}'">` : h.initials}</div>
       <div><h3>${h.name}</h3><div class="title">${h.title}</div>${h.linkedin ? `<a class="li" href="${h.linkedin}" target="_blank" rel="noopener">LinkedIn ↗</a>` : ""}${h.x ? `<a class="li" href="${h.x}" target="_blank" rel="noopener" style="margin-left:10px">X ↗</a>` : ""}</div>
     </div>
     <div class="tags">${h.tags.map(t => `<span>${t}</span>`).join("")}</div>
     <div class="who"><b>Book if you are:</b> ${h.who}</div>
     ${h.hours ? `<div class="hrs"><b>Hours:</b> ${h.hours}</div>` : ""}
+    ${h.note ? `<div class="who note">${h.note}</div>` : ""}
     ${h.bookingUrl
       ? `<a class="apply" href="${h.bookingUrl}" target="_blank" rel="noopener">Apply for a session with ${h.name.split(" ")[0]} →</a>`
       : APPLICATIONS_OPEN
         ? `<a class="apply" href="${BOOKING_SITE}">Apply for a session →</a>`
-        : `<a class="apply wait" href="https://luma.com/web3devs_underground">Get notified when applications open →</a>`}
+        : `<a class="apply wait" href="https://luma.com/web3devs_underground">Get notified when registration opens →</a>`}
   </div>`);
 for (let i = 0; i < placeholders; i++) cards.push(`
   <div class="host soon">

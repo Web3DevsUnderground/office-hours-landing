@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request a 1:1 — Mid-Chain Office Hours Day</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0a0a0a">
+<!-- Office-Hours-Apply-Page-v1.0 · 13 Sep 2026 · One page for every host: /apply?host=<slug>. Reads /api/hosts, posts to /api/apply. -->
+<style>
+:root{--bg:#0a0a0a;--panel:#141414;--panel2:#1d1d1d;--ink:#f5f5f3;--ink2:#c2c0bb;--muted:#8f8d87;--accent:#e13b3b;--accent2:#ffcf3f;--ring:rgba(255,255,255,.10);--ring2:rgba(255,255,255,.18);--ok:#3ddc84;--r:14px;--rs:10px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;font-size:16px}
+a{color:var(--accent2);text-decoration:none} a:hover{text-decoration:underline}
+.wrap{max-width:720px;margin:0 auto;padding:20px 20px 60px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 0 18px;border-bottom:1px solid var(--ring);margin-bottom:22px}
+header a.back{color:var(--ink2);font-size:14px}
+header .ev{font-size:13px;color:var(--muted);text-align:right}
+h1{font-size:clamp(24px,5vw,32px);line-height:1.15;font-weight:800;letter-spacing:-.01em;margin-bottom:6px}
+.host{display:flex;gap:16px;align-items:center;background:var(--panel);border:1px solid var(--ring);border-radius:var(--r);padding:18px;margin:18px 0}
+.avatar{width:72px;height:72px;border-radius:99px;flex-shrink:0;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;color:#111;overflow:hidden;border:2px solid var(--ring2)}
+.avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.host .t{font-size:14px;color:var(--accent2);margin-top:2px}
+.host .w{font-size:14px;color:var(--ink2);margin-top:6px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.tags span{font-size:12px;padding:3px 9px;border-radius:999px;background:var(--panel2);border:1px solid var(--ring);color:var(--ink2)}
+form{display:grid;gap:16px;margin-top:8px}
+label{display:block;font-weight:600;font-size:14px;margin-bottom:6px}
+label small{font-weight:400;color:var(--muted)}
+input,select,textarea{width:100%;background:var(--panel);border:1px solid var(--ring2);border-radius:var(--rs);color:var(--ink);font:inherit;padding:12px 14px;min-height:46px}
+textarea{min-height:120px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--accent2);outline-offset:1px;border-color:transparent}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.grid2{grid-template-columns:1fr}}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px}
+.slot{position:relative}
+.slot input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.slot span{display:flex;align-items:center;justify-content:center;min-height:46px;border:1px solid var(--ring2);border-radius:var(--rs);background:var(--panel);font-variant-numeric:tabular-nums;font-weight:600;font-size:15px}
+.slot input:checked + span{background:var(--accent2);color:#111;border-color:var(--accent2)}
+.slot input:focus-visible + span{outline:2px solid var(--accent2);outline-offset:2px}
+.slot.taken span{opacity:.35;text-decoration:line-through}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--ink2)}
+.consent input{width:20px;height:20px;min-height:0;margin-top:2px;flex-shrink:0}
+button{background:var(--accent);color:#fff;font:inherit;font-weight:700;border:0;border-radius:12px;min-height:50px;padding:12px 22px;cursor:pointer;font-size:16px}
+button:disabled{opacity:.5;cursor:default}
+.note{font-size:13.5px;color:var(--muted)}
+.msg{background:var(--panel);border:1px solid var(--ring2);border-radius:var(--r);padding:20px;margin-top:18px}
+.msg.ok{border-color:var(--ok)} .msg.err{border-color:var(--accent)}
+.msg h2{font-size:20px;margin-bottom:6px}
+.hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+.skeleton{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="back" href="/">← All hosts</a>
+    <div class="ev">Mid-Chain Office Hours Day<br>Sun 25 Oct 2026 · Startup Nation Central, Tel Aviv</div>
+  </header>
+
+  <div id="loading" class="skeleton">Loading host…</div>
+
+  <div id="app" hidden>
+    <h1>Request a 1:1 with <span id="hName"></span></h1>
+    <p class="note">20 minutes, one-on-one, in person at Lilienblum 28. The host reads every request and picks their sessions — the better the question, the better your odds. You'll hear back either way.</p>
+
+    <div class="host">
+      <div class="avatar" id="hAvatar"></div>
+      <div>
+        <div style="font-weight:700;font-size:18px" id="hName2"></div>
+        <div class="t" id="hTitle"></div>
+        <div class="w" id="hWho"></div>
+        <div class="tags" id="hTags"></div>
+      </div>
+    </div>
+
+    <form id="f" novalidate>
+      <div>
+        <label>Pick a slot <small>· Israel time · 20 minutes</small></label>
+        <div class="slots" id="slots"></div>
+        <p class="note" id="slotNote" style="margin-top:8px"></p>
+      </div>
+      <div>
+        <label for="discuss">What do you want to discuss? <small>· the host decides on this</small></label>
+        <textarea id="discuss" name="discuss" required maxlength="1500" placeholder="The specific question or decision you want twenty minutes on. Enough context to get there fast."></textarea>
+      </div>
+      <div class="grid2">
+        <div><label for="name">Full name</label><input id="name" name="name" required autocomplete="name"></div>
+        <div><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="email"></div>
+      </div>
+      <div class="grid2">
+        <div><label for="company">Company / project <small>· optional</small></label><input id="company" name="company"></div>
+        <div><label for="role">Your role <small>· optional</small></label><input id="role" name="role"></div>
+      </div>
+      <div class="grid2">
+        <div><label for="stage">Where you are</label>
+          <select id="stage" name="stage">
+            <option>Idea</option><option>Building</option><option>Live product</option><option>Raising</option><option>Researcher / Academic</option><option>Student</option><option>Other</option>
+          </select></div>
+        <div><label for="linkedin">LinkedIn <small>· optional</small></label><input id="linkedin" name="linkedin" inputmode="url" placeholder="linkedin.com/in/…"></div>
+      </div>
+      <div><label for="phone">Phone / WhatsApp <small>· optional, only used on the day</small></label><input id="phone" name="phone" inputmode="tel" autocomplete="tel"></div>
+      <div class="hp" aria-hidden="true"><label>Website</label><input name="website" tabindex="-1" autocomplete="off"></div>
+      <label class="consent"><input type="checkbox" id="consent" name="consent" required><span>I agree that Web3 Devs Underground shares this request with the host and contacts me about this event. Nothing else is done with it.</span></label>
+      <button type="submit" id="submit">Send request</button>
+      <p class="note">Sending a request holds the slot until the host decides. Free — By Builders, For Builders. Powered by Masterkey VC.</p>
+    </form>
+    <div id="out"></div>
+  </div>
+
+  <div id="closed" class="msg" hidden>
+    <h2>Applications aren't open yet</h2>
+    <p class="note">This host's slots go live shortly. <a href="https://luma.com/web3devs_underground">Follow the community calendar</a> to hear the moment they do, or <a href="/">see all hosts</a>.</p>
+  </div>
+</div>
+
+<script>
+const slug = new URLSearchParams(location.search).get("host");
+const $ = (id) => document.getElementById(id);
+function esc(s){return String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function showClosed(){ $("loading").hidden = true; $("closed").hidden = false; }
+
+(async () => {
+  if (!slug) return showClosed();
+  let data;
+  try {
+    const r = await fetch("/api/hosts?slug=" + encodeURIComponent(slug), { cache: "no-store" });
+    if (!r.ok) return showClosed();
+    data = await r.json();
+  } catch (e) { return showClosed(); }
+  const h = data.hosts && data.hosts[0];
+  if (!h) return showClosed();
+
+  document.title = `Request a 1:1 with ${h.name} — Mid-Chain Office Hours Day`;
+  $("hName").textContent = h.name; $("hName2").textContent = h.name;
+  $("hTitle").textContent = [h.role, h.company].filter(Boolean).join(", ");
+  $("hWho").textContent = h.pitch || h.bio || "";
+  $("hTags").innerHTML = (h.topics || []).map(t => `<span>${esc(t)}</span>`).join("");
+  $("hAvatar").innerHTML = h.photo ? `<img src="${esc(h.photo)}" alt="${esc(h.name)}">` : esc(h.name.split(" ").map(w => w[0]).join("").slice(0, 2));
+
+  const open = new Set(h.openSlots || []);
+  if (!h.slots.length || (open.size === 0)) {
+    $("slots").innerHTML = "";
+    $("slotNote").textContent = h.capReached ? "This host's sessions are full. Try another host." : "No slots open right now.";
+    $("submit").disabled = true;
+  } else {
+    $("slots").innerHTML = h.slots.map(s => `<label class="slot${open.has(s) ? "" : " taken"}"><input type="radio" name="slot" value="${s}" ${open.has(s) ? "" : "disabled"} required><span>${s.replace("-", "–")}</span></label>`).join("");
+    $("slotNote").textContent = `${open.size} of ${h.slots.length} slots open. ${h.remoteOk ? "This host is also open to a video call if you can't be there in person — mention it in your request." : ""}`;
+  }
+  $("loading").hidden = true; $("app").hidden = false;
+
+  $("f").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const f = e.target;
+    if (!f.checkValidity()) { f.reportValidity(); return; }
+    const body = Object.fromEntries(new FormData(f).entries());
+    body.host = slug; body.consent = !!f.consent.checked;
+    $("submit").disabled = true; $("submit").textContent = "Sending…";
+    try {
+      const r = await fetch("/api/apply", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+      const j = await r.json();
+      if (r.ok && j.ok) {
+        f.hidden = true;
+        $("out").innerHTML = `<div class="msg ok"><h2>Request sent</h2><p>${esc(h.name)} now has your request for <b>${esc(j.slot.replace("-", "–"))}</b> on Sunday 25 October. The slot is held while they decide; you'll get an email either way.</p><p class="note" style="margin-top:10px">Come to the rooftop too — <a href="https://luma.com/web3devs-tz30">evening panel + cocktails, 80 seats</a>. <a href="/">Back to all hosts</a>.</p></div>`;
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        const why = { slot_taken: "Someone took that slot a moment ago — pick another one.", host_full: "This host's sessions just filled up.", consent_required: "Please tick the consent box.", missing_fields: "Please fill in the required fields.", not_configured: "Applications open shortly — please try again later." }[j.error] || "Something went wrong. Please try again.";
+        $("out").innerHTML = `<div class="msg err"><h2>Not sent</h2><p>${esc(why)}</p></div>`;
+        $("submit").disabled = false; $("submit").textContent = "Send request";
+        if (j.error === "slot_taken" || j.error === "host_full") setTimeout(() => location.reload(), 2500);
+      }
+    } catch (err) {
+      $("out").innerHTML = `<div class="msg err"><h2>Not sent</h2><p>Network problem. Please try again.</p></div>`;
+      $("submit").disabled = false; $("submit").textContent = "Send request";
+    }
+  });
+})();
+</script>
+</body>
+</html>
