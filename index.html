@@ -10,7 +10,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://officehours.web3devs.org">
 <meta name="theme-color" content="#0a0a0a">
-<!-- Office-Hours-Landing-Page-v2.8 · 13 Sep 2026 · Web3 Devs Underground / Masterkey VC.
+<!-- Office-Hours-Landing-Page-v2.9 · 13 Sep 2026 · Web3 Devs Underground / Masterkey VC.
      Edit only: the HOSTS list and the two flags at the top of the <script>. Photos + logo are embedded (no external assets). -->
 <style>
 :root{
@@ -231,7 +231,7 @@ footer .links a{color:var(--ink2)}
       <a href="mailto:web3devsunderground@gmail.com">Contact</a>
     </div>
     <div class="small"><a href="https://www.mid-chain.com/">Mid-Chain De-Fi Conference — mid-chain.com</a> · <a href="https://luma.com/rzaklefv">conference registration</a> · Office Hours Day is produced by Web3 Devs Underground, powered by Masterkey VC.</div>
-    <!-- v2.8 publish gate: a host card renders only when published:true (= host confirmed text + Consent ✓ in Notion). Registration is one Luma event per host; a card links out only when that host also has a live, public Luma event (bookingUrl). -->
+    <!-- v2.9 publish gate: a host card renders only when published:true (= host confirmed text + Consent ✓ in Notion). Registration is one Luma event per host; a card links out only when that host also has a live, public Luma event (bookingUrl). -->
   </div>
 </footer>
 
@@ -283,12 +283,14 @@ const HOSTS = [
   { name: "Ehud Naos", title: "CEO, Mamram Alumni Association",
     tags: ["Hiring","Career advice","Go-to-market","Fundraising","Product"],
     who: "Early founders and engineers fresh out of tech units — first steps, first hires, first network.",
-    linkedin: "https://il.linkedin.com/in/ehud-naos", photo: PHOTOS["Ehud Naos"], initials: "EN", published: false, bookingUrl: "" },
+    hours: "Sun 25 Oct · 14:00–16:00",
+    note: "Ehud has confirmed. Registration for his sessions opens soon.",
+    linkedin: "https://il.linkedin.com/in/ehud-naos", photo: PHOTOS["Ehud Naos"], initials: "EN", published: true, bookingUrl: "" },
 ];
 /* ===================================== */
 const live = HOSTS.filter(h => h.published);
 const placeholders = Math.max(0, Math.min(3, HOSTS.length - live.length));
-/* 14 Sep: registration is one Luma event per host (the /apply pages are dropped). Eli + Saul are live and public → linked. Dror is published but his Luma event is private until he confirms hours → no bookingUrl. Arkady confirmed verbally (13 Sep) → published, booking opens when his form is in. Others stay hidden until they submit. */
+/* 15 Sep: Eli and Saul link to their own Luma events. Dror, Arkady and Ehud are confirmed but have no Luma event yet, so their cards say "registration opens soon" and point at the calendar. Idan and Adam stay hidden until they confirm. */
 const cards = live.map(h => `
   <div class="host">
     <span class="badge${(APPLICATIONS_OPEN || h.bookingUrl) ? " open" : ""}">${(APPLICATIONS_OPEN || h.bookingUrl) ? "Applications open" : "Confirmed · registration opens soon"}</span>
