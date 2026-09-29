@@ -10,7 +10,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://officehours.web3devs.org">
 <meta name="theme-color" content="#0a0a0a">
-<!-- Office-Hours-Landing-Page-v2.9 · 13 Sep 2026 · Web3 Devs Underground / Masterkey VC.
+<!-- Office-Hours-Landing-Page-v3.0 · 29 Sep 2026 (v3.0: Dror + Ehud booking links) · was v2.9 · 13 Sep 2026 · Web3 Devs Underground / Masterkey VC.
      Edit only: the HOSTS list and the two flags at the top of the <script>. Photos + logo are embedded (no external assets). -->
 <style>
 :root{
@@ -264,8 +264,8 @@ const HOSTS = [
   { name: "Dror Avieli", title: "Chief Customer Officer & Head of Americas, Elliptic · ex-ConsenSys",
     tags: ["AI x Crypto","Product","Go-to-market","Hiring","Entrepreneurship"],
     who: "Founders building customer success and post-sale in web3 — how to scale it. Also go-to-market and hiring.",
-    hours: "Sun 25 Oct · hours being confirmed · video possible",
-    linkedin: "https://www.linkedin.com/in/droravieli", photo: PHOTOS["Dror Avieli"], initials: "DA", published: true, bookingUrl: "" },
+    hours: "Sun 25 Oct · slot times on his registration page · video possible",
+    linkedin: "https://www.linkedin.com/in/droravieli", photo: PHOTOS["Dror Avieli"], initials: "DA", published: true, bookingUrl: "https://luma.com/web3devs-ul8o" },
   { name: "Idan Ofrat", title: "Co-founder & Chief Product Officer, Fireblocks",
     tags: ["Product","Security","Go-to-market","Fundraising","Hiring"],
     who: "Founders building custody, wallets or institutional crypto infrastructure — product, security and scaling decisions.",
@@ -284,13 +284,12 @@ const HOSTS = [
     tags: ["Hiring","Career advice","Go-to-market","Fundraising","Product"],
     who: "Early founders and engineers fresh out of tech units — first steps, first hires, first network.",
     hours: "Sun 25 Oct · 14:00–16:00",
-    note: "Ehud has confirmed. Registration for his sessions opens soon.",
-    linkedin: "https://il.linkedin.com/in/ehud-naos", photo: PHOTOS["Ehud Naos"], initials: "EN", published: true, bookingUrl: "" },
+    linkedin: "https://il.linkedin.com/in/ehud-naos", photo: PHOTOS["Ehud Naos"], initials: "EN", published: true, bookingUrl: "https://luma.com/wd03khkv" },
 ];
 /* ===================================== */
 const live = HOSTS.filter(h => h.published);
 const placeholders = Math.max(0, Math.min(3, HOSTS.length - live.length));
-/* 15 Sep: Eli and Saul link to their own Luma events. Dror, Arkady and Ehud are confirmed but have no Luma event yet, so their cards say "registration opens soon" and point at the calendar. Idan and Adam stay hidden until they confirm. */
+/* v3.0, 29 Sep: Eli, Saul, Dror and Ehud link to their own public Luma events. Arkady is confirmed but his Luma event is still private, so his card says "registration opens soon". Idan and Adam stay hidden until they confirm. */
 const cards = live.map(h => `
   <div class="host">
     <span class="badge${(APPLICATIONS_OPEN || h.bookingUrl) ? " open" : ""}">${(APPLICATIONS_OPEN || h.bookingUrl) ? "Applications open" : "Confirmed · registration opens soon"}</span>
