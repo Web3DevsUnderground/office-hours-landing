@@ -10,7 +10,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://officehours.web3devs.org">
 <meta name="theme-color" content="#0a0a0a">
-<!-- Office-Hours-Landing-Page-v3.0 · 29 Sep 2026 (v3.0: Dror + Ehud booking links) · was v2.9 · 13 Sep 2026 · Web3 Devs Underground / Masterkey VC.
+<!-- Office-Hours-Landing-Page-v3.3 · 4 Oct 2026 (v3.3: Arkady Karpman 14:30–17:30 with his Luma link; Shauli 14:00–16:00 · v3.2: host cards in the lineup order standard: Eli, Dror, Arkady, Ehud, Shauli · v3.1: utm_source passed to host Luma links · v3.0: Dror + Ehud booking links) · was v2.9 · 13 Sep 2026 · Web3 Devs Underground / Masterkey VC.
      Edit only: the HOSTS list and the two flags at the top of the <script>. Photos + logo are embedded (no external assets). -->
 <style>
 :root{
@@ -256,40 +256,42 @@ const HOSTS = [
     who: "Technical founders working on cryptography, ZK proofs, L2s and rollups.",
     hours: "Sun 25 Oct · 14:00–16:00",
     linkedin: "https://www.linkedin.com/in/eli-ben-sasson-9b7959/", x: "https://x.com/elibensasson", photo: "https://pbs.twimg.com/profile_images/2064992619231395840/m19ef26w_400x400.jpg", initials: "EB", published: true, bookingUrl: "https://luma.com/web3devs-iw1k" },
-  { name: "Saul Rejwan", title: "Managing Partner, Masterkey VC · Founder, Web3 Devs Underground",
-    tags: ["Product","Go-to-market","Fundraising","Career advice","Entrepreneurship"],
-    who: "Founders, builders and any member looking for advice — or who can teach him something new.",
-    hours: "Sun 25 Oct · 13:00–16:00",
-    linkedin: "https://www.linkedin.com/in/saul-shauli-rejwan/", photo: PHOTOS["Shauli Rejwan"], initials: "SR", published: true, bookingUrl: "https://luma.com/web3devs-myz1" },
   { name: "Dror Avieli", title: "Chief Customer Officer & Head of Americas, Elliptic · ex-ConsenSys",
     tags: ["AI x Crypto","Product","Go-to-market","Hiring","Entrepreneurship"],
     who: "Founders building customer success and post-sale in web3 — how to scale it. Also go-to-market and hiring.",
     hours: "Sun 25 Oct · slot times on his registration page · video possible",
     linkedin: "https://www.linkedin.com/in/droravieli", photo: PHOTOS["Dror Avieli"], initials: "DA", published: true, bookingUrl: "https://luma.com/web3devs-ul8o" },
-  { name: "Idan Ofrat", title: "Co-founder & Chief Product Officer, Fireblocks",
-    tags: ["Product","Security","Go-to-market","Fundraising","Hiring"],
-    who: "Founders building custody, wallets or institutional crypto infrastructure — product, security and scaling decisions.",
-    linkedin: "https://www.linkedin.com/in/idanofrat/", photo: PHOTOS["Idan Ofrat"], initials: "IO", published: false, bookingUrl: "" },
   { name: "Arkady Karpman", title: "Co-founder & CTO, Rapyd",
     tags: ["Infra / DevOps","Hiring","Product","Security","Go-to-market"],
     who: "Engineers and founders scaling payments or fintech infrastructure past the first million transactions.",
-    hours: "Sun 25 Oct · hours to be announced",
-    note: "Arkady has confirmed. Registration for his sessions opens soon.",
-    linkedin: "https://www.linkedin.com/in/arkady-karpman-4904406/", photo: PHOTOS["Arkady Karpman"], initials: "AK", published: true, bookingUrl: "" },
-  { name: "Adam Levi, Ph.D.", title: "Co-founder, xStocks & Backed Finance (Kraken) · Co-founder & former CTO, DAOstack",
-    tags: ["Product","Go-to-market","Fundraising","Smart contracts","Research"],
-    who: "Founders tokenizing real-world assets — from the legal wrapper to onchain liquidity.",
-    linkedin: "https://www.linkedin.com/in/leviadam/", photo: PHOTOS["Adam Levi"], initials: "AL", published: false, bookingUrl: "" },
+    hours: "Sun 25 Oct · 14:30–17:30",
+    linkedin: "https://www.linkedin.com/in/arkady-karpman-4904406/", photo: PHOTOS["Arkady Karpman"], initials: "AK", published: true, bookingUrl: "https://luma.com/zr3739f8" },
   { name: "Ehud Naos", title: "CEO, Mamram Alumni Association",
     tags: ["Hiring","Career advice","Go-to-market","Fundraising","Product"],
     who: "Early founders and engineers fresh out of tech units — first steps, first hires, first network.",
     hours: "Sun 25 Oct · 14:00–16:00",
     linkedin: "https://il.linkedin.com/in/ehud-naos", photo: PHOTOS["Ehud Naos"], initials: "EN", published: true, bookingUrl: "https://luma.com/wd03khkv" },
+  { name: "Saul Rejwan", title: "Managing Partner, Masterkey VC · Founder, Web3 Devs Underground",
+    tags: ["Product","Go-to-market","Fundraising","Career advice","Entrepreneurship"],
+    who: "Founders, builders and any member looking for advice — or who can teach him something new.",
+    hours: "Sun 25 Oct · 14:00–16:00",
+    linkedin: "https://www.linkedin.com/in/saul-shauli-rejwan/", photo: PHOTOS["Shauli Rejwan"], initials: "SR", published: true, bookingUrl: "https://luma.com/web3devs-myz1" },
+  { name: "Idan Ofrat", title: "Co-founder & Chief Product Officer, Fireblocks",
+    tags: ["Product","Security","Go-to-market","Fundraising","Hiring"],
+    who: "Founders building custody, wallets or institutional crypto infrastructure — product, security and scaling decisions.",
+    linkedin: "https://www.linkedin.com/in/idanofrat/", photo: PHOTOS["Idan Ofrat"], initials: "IO", published: false, bookingUrl: "" },
+  { name: "Adam Levi, Ph.D.", title: "Co-founder, xStocks & Backed Finance (Kraken) · Co-founder & former CTO, DAOstack",
+    tags: ["Product","Go-to-market","Fundraising","Smart contracts","Research"],
+    who: "Founders tokenizing real-world assets — from the legal wrapper to onchain liquidity.",
+    linkedin: "https://www.linkedin.com/in/leviadam/", photo: PHOTOS["Adam Levi"], initials: "AL", published: false, bookingUrl: "" },
 ];
 /* ===================================== */
 const live = HOSTS.filter(h => h.published);
+/* v3.1: pass the post's tracking tag (utm_source) through to each host's Luma page, so Luma Insights shows which post brought the registration. */
+const UTM = new URLSearchParams(location.search).get("utm_source");
+const withUtm = u => (!UTM || !u) ? u : u + (u.includes("?") ? "&" : "?") + "utm_source=" + encodeURIComponent(UTM);
 const placeholders = Math.max(0, Math.min(3, HOSTS.length - live.length));
-/* v3.0, 29 Sep: Eli, Saul, Dror and Ehud link to their own public Luma events. Arkady is confirmed but his Luma event is still private, so his card says "registration opens soon". Idan and Adam stay hidden until they confirm. */
+/* v3.3, 4 Oct: all five hosts link to their own public Luma events (Arkady from 4 Oct, 14:30–17:30). Idan and Adam stay hidden until they confirm. */
 const cards = live.map(h => `
   <div class="host">
     <span class="badge${(APPLICATIONS_OPEN || h.bookingUrl) ? " open" : ""}">${(APPLICATIONS_OPEN || h.bookingUrl) ? "Applications open" : "Confirmed · registration opens soon"}</span>
@@ -302,7 +304,7 @@ const cards = live.map(h => `
     ${h.hours ? `<div class="hrs"><b>Hours:</b> ${h.hours}</div>` : ""}
     ${h.note ? `<div class="who note">${h.note}</div>` : ""}
     ${h.bookingUrl
-      ? `<a class="apply" href="${h.bookingUrl}" target="_blank" rel="noopener">Apply for a session with ${h.name.split(" ")[0]} →</a>`
+      ? `<a class="apply" href="${withUtm(h.bookingUrl)}" target="_blank" rel="noopener">Apply for a session with ${h.name.split(" ")[0]} →</a>`
       : APPLICATIONS_OPEN
         ? `<a class="apply" href="${BOOKING_SITE}">Apply for a session →</a>`
         : `<a class="apply wait" href="https://luma.com/web3devs_underground">Get notified when registration opens →</a>`}
