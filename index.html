@@ -10,7 +10,20 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://officehours.web3devs.org">
 <meta name="theme-color" content="#0a0a0a">
-<!-- Office-Hours-Landing-Page-v3.3 · 4 Oct 2026 (v3.3: Arkady Karpman 14:30–17:30 with his Luma link; Shauli 14:00–16:00 · v3.2: host cards in the lineup order standard: Eli, Dror, Arkady, Ehud, Shauli · v3.1: utm_source passed to host Luma links · v3.0: Dror + Ehud booking links) · was v2.9 · 13 Sep 2026 · Web3 Devs Underground / Masterkey VC.
+<!-- Meta Pixel (dataset "Web3 Devs Underground" 1438197431604878) · v3.4 -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1438197431604878');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1438197431604878&ev=PageView&noscript=1"></noscript>
+<!-- Office-Hours-Landing-Page-v3.4 · 8 Oct 2026 (v3.4: hours 13:00–17:30; Dror 13:00–14:00; Meta pixel PageView + LumaClick · v3.3: Arkady Karpman 14:30–17:30 with his Luma link; Shauli 14:00–16:00 · v3.2: host cards in the lineup order standard: Eli, Dror, Arkady, Ehud, Shauli · v3.1: utm_source passed to host Luma links · v3.0: Dror + Ehud booking links) · was v2.9 · 13 Sep 2026 · Web3 Devs Underground / Masterkey VC.
      Edit only: the HOSTS list and the two flags at the top of the <script>. Photos + logo are embedded (no external assets). -->
 <style>
 :root{
@@ -148,7 +161,7 @@ footer .links a{color:var(--ink2)}
     <h1>Twenty minutes, one-on-one, with people you <em>can't usually get in a room with.</em></h1>
     <p class="lead">Founders, CTOs, investors and researchers hold open office hours — free, curated 1:1 sessions at our offices. Bring your hardest question: your architecture, your go-to-market, your raise, your first hire, your career.</p>
     <div class="facts">
-      <div class="fact"><div class="k">When</div><div class="v">Sunday, 25 October 2026<small>09:00–18:00 · evening panel 18:30 · rooftop to 21:00</small></div></div>
+      <div class="fact"><div class="k">When</div><div class="v">Sunday, 25 October 2026<small>13:00–17:30 · evening panel 18:30 · rooftop to 21:00</small></div></div>
       <div class="fact"><div class="k">Where</div><div class="v">Startup Nation Central<small>Lilienblum 28, Tel Aviv</small></div></div>
       <div class="fact"><div class="k">Cost</div><div class="v">Free<small>curated · capacity limited</small></div></div>
     </div>
@@ -184,7 +197,7 @@ footer .links a{color:var(--ink2)}
   <div class="wrap">
     <h2>The day</h2>
     <div class="sched">
-      <div class="row"><span class="t">09:00–18:00</span><p><b>Office hours.</b> Confirmed 1:1 sessions, 20 minutes each, in the hour blocks each host chose. Your exact time comes with your confirmation. Work from the space between sessions — it's an office, bring your laptop.</p></div>
+      <div class="row"><span class="t">13:00–17:30</span><p><b>Office hours.</b> Confirmed 1:1 sessions, 20 minutes each, in the hour blocks each host chose. Your exact time comes with your confirmation. Work from the space between sessions — it's an office, bring your laptop.</p></div>
       <div class="row"><span class="t">18:00–18:30</span><p><b>Doors open on the roof.</b> First drinks, first hellos. RSVP required — <a href="https://luma.com/web3devs-tz30">80 seats, by approval →</a></p></div>
       <div class="row hl"><span class="t">18:30–19:15</span><p><b>The panel — the top of the evening.</b> One conversation, no slides, with people from tomorrow's Mid-Chain programme and the hosts who spent the day downstairs. Topic and panelists announced soon.</p></div>
       <div class="row"><span class="t">19:15–21:00</span><p><b>Rooftop cocktails.</b> Meet the hosts, tomorrow's conference speakers, and the community on the roof of our new offices. Kept small on purpose: 80 seats, approval on request, hosts and their 1:1 guests first.</p></div>
@@ -259,7 +272,7 @@ const HOSTS = [
   { name: "Dror Avieli", title: "Chief Customer Officer & Head of Americas, Elliptic · ex-ConsenSys",
     tags: ["AI x Crypto","Product","Go-to-market","Hiring","Entrepreneurship"],
     who: "Founders building customer success and post-sale in web3 — how to scale it. Also go-to-market and hiring.",
-    hours: "Sun 25 Oct · slot times on his registration page · video possible",
+    hours: "Sun 25 Oct · 13:00–14:00 · video possible",
     linkedin: "https://www.linkedin.com/in/droravieli", photo: PHOTOS["Dror Avieli"], initials: "DA", published: true, bookingUrl: "https://luma.com/web3devs-ul8o" },
   { name: "Arkady Karpman", title: "Co-founder & CTO, Rapyd",
     tags: ["Infra / DevOps","Hiring","Product","Security","Go-to-market"],
@@ -290,6 +303,8 @@ const live = HOSTS.filter(h => h.published);
 /* v3.1: pass the post's tracking tag (utm_source) through to each host's Luma page, so Luma Insights shows which post brought the registration. */
 const UTM = new URLSearchParams(location.search).get("utm_source");
 const withUtm = u => (!UTM || !u) ? u : u + (u.includes("?") ? "&" : "?") + "utm_source=" + encodeURIComponent(UTM);
+/* v3.4: Meta pixel. Count clicks to any Luma page as LumaClick, so paid traffic shows how many visitors go on to apply. */
+document.addEventListener("click", e => { const l = e.target.closest && e.target.closest('a[href*="luma.com"]'); if (l && window.fbq) fbq("trackCustom", "LumaClick", { page: l.href.split("?")[0] }); });
 const placeholders = Math.max(0, Math.min(3, HOSTS.length - live.length));
 /* v3.3, 4 Oct: all five hosts link to their own public Luma events (Arkady from 4 Oct, 14:30–17:30). Idan and Adam stay hidden until they confirm. */
 const cards = live.map(h => `
