@@ -1,4 +1,4 @@
-# Web3 Devs Office Hours — landing page (v4.2: event banners + partner logos in the hero, UTM forwarded to every Luma link)
+# Web3 Devs Office Hours — landing page (v4.3: date-switched link preview via api/og.js, banners + partner logos in the hero, UTM forwarding)
 
 Static landing page (`index.html`) + one booking page (`apply.html`, one host per URL) + two Vercel serverless functions that read/write the Notion databases. No third-party form tool.
 
