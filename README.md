@@ -1,4 +1,4 @@
-# Mid-Chain Office Hours Day — landing page + booking
+# Web3 Devs Office Hours — landing page (v4.0: all Oct 25–26 events, deadline phases, partner footer)
 
 Static landing page (`index.html`) + one booking page (`apply.html`, one host per URL) + two Vercel serverless functions that read/write the Notion databases. No third-party form tool.
 
