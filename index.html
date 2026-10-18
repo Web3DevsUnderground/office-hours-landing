@@ -28,7 +28,7 @@ fbq('init','1438197431604878');
 fbq('track','PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1438197431604878&ev=PageView&noscript=1"></noscript>
-<!-- Office-Hours-Landing-Page-v4.3 · 18 Oct 2026 (v4.3: link preview /og.jpg served by api/og.js — Office Hours banner until 18.10, all-events banner from 19.10 00:00; og:url removed so a second domain previews under its own address · v4.2: partner logos moved up under the event banners (logos from the Mid-Chain banner, /partners); all utm_* params forwarded to every Luma link; pixel UtmVisit + utm_source on LumaClick/BannerClick · v4.1: centered hero; the three event banners side by side in the hero, each jumping to its section; host picker removed from the hero, Office Hours card now opens the hosts section · v4.0: "Web3 Devs Office Hours"; schedule replaced by "Additional Events" in one card template shared with the hero; private dinner link removed; deadline phases open → waitlist (to Thu 22.10) → closed, switched by date (?phase= to preview); partner credits + logo row in the footer · v3.7: Hebrew by default, RTL, English button; strings in I18N_EN at the end of the script · v3.6: host picker in the hero, deadline, fewer exits · v3.5: og:image share banner 1200x630; og:url to the live vercel URL (officehours.web3devs.org does not resolve); privacy line in footer · v3.4: hours 13:00–17:30; Dror 13:00–14:00; Meta pixel PageView + LumaClick · v3.3: Arkady Karpman 14:30–17:30 with his Luma link; Shauli 14:00–16:00 · v3.2: host cards in the lineup order standard: Eli, Dror, Arkady, Ehud, Shauli · v3.1: utm_source passed to host Luma links · v3.0: Dror + Ehud booking links) · was v2.9 · 13 Sep 2026 · Web3 Devs Underground / Masterkey VC.
+<!-- Office-Hours-Landing-Page-v4.4 · 18 Oct 2026 (v4.4: each event card carries its banner as a faded background under a dark gradient (text ≥5.5:1 over the brightest banner pixels) · v4.3: link preview /og.jpg served by api/og.js — Office Hours banner until 18.10, all-events banner from 19.10 00:00; og:url removed so a second domain previews under its own address · v4.2: partner logos moved up under the event banners (logos from the Mid-Chain banner, /partners); all utm_* params forwarded to every Luma link; pixel UtmVisit + utm_source on LumaClick/BannerClick · v4.1: centered hero; the three event banners side by side in the hero, each jumping to its section; host picker removed from the hero, Office Hours card now opens the hosts section · v4.0: "Web3 Devs Office Hours"; schedule replaced by "Additional Events" in one card template shared with the hero; private dinner link removed; deadline phases open → waitlist (to Thu 22.10) → closed, switched by date (?phase= to preview); partner credits + logo row in the footer · v3.7: Hebrew by default, RTL, English button; strings in I18N_EN at the end of the script · v3.6: host picker in the hero, deadline, fewer exits · v3.5: og:image share banner 1200x630; og:url to the live vercel URL (officehours.web3devs.org does not resolve); privacy line in footer · v3.4: hours 13:00–17:30; Dror 13:00–14:00; Meta pixel PageView + LumaClick · v3.3: Arkady Karpman 14:30–17:30 with his Luma link; Shauli 14:00–16:00 · v3.2: host cards in the lineup order standard: Eli, Dror, Arkady, Ehud, Shauli · v3.1: utm_source passed to host Luma links · v3.0: Dror + Ehud booking links) · was v2.9 · 13 Sep 2026 · Web3 Devs Underground / Masterkey VC.
      Edit only: the HOSTS list and the two flags at the top of the <script>. Photos + logo are embedded (no external assets). -->
 <style>
 :root{
@@ -211,6 +211,13 @@ footer .links a{color:var(--ink2)}
   .bn{flex:0 0 80%;scroll-snap-align:center}
 }
 @media (prefers-reduced-motion:reduce){ .bn{transition:none} .bn:hover{transform:none} }
+/* v4.4: event banner as a faded card background */
+.ev.has-bg{position:relative;overflow:hidden;isolation:isolate}
+.ev.has-bg::before{content:"";position:absolute;inset:0;z-index:-2;background:var(--evbg) center 30%/cover no-repeat;opacity:.5;transition:opacity .25s ease,transform .6s ease}
+.ev.has-bg::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(20,20,20,.6) 0%,rgba(20,20,20,.82) 45%,rgba(20,20,20,.95) 100%)}
+.ev.has-bg:hover::before{opacity:.62;transform:scale(1.03)}
+.ev.has-bg .where{text-shadow:0 1px 2px rgba(0,0,0,.6)}
+@media (prefers-reduced-motion:reduce){ .ev.has-bg::before{transition:none} .ev.has-bg:hover::before{transform:none} }
 /* v4.2: partner strip under the banners */
 .ptop{margin:28px auto 0;max-width:940px}
 .ptop .pgroups{display:flex;flex-direction:column;gap:18px;margin:0}
@@ -283,7 +290,7 @@ footer .links a{color:var(--ink2)}
 
 <section id="hosts">
   <div class="wrap">
-    <article class="ev feat" id="office-hours">
+    <article class="ev feat has-bg" id="office-hours" style="--evbg:url(banners/banner-office-hours-v1.0.jpg)">
       <div class="when" data-i18n="oh_when">יום א׳ · 25.10 · <bdi dir="ltr">13:00–17:30</bdi></div>
       <div class="where" data-i18n="oh_where">Startup Nation Central · ליליינבלום 28, תל אביב</div>
       <h2 class="name" data-i18n="oh_name">Office Hours · פגישות 1:1</h2>
@@ -318,7 +325,7 @@ footer .links a{color:var(--ink2)}
     <h2 data-i18n="ev_h">אירועים נוספים</h2>
     <p class="sub" data-i18n="ev_sub">Office Hours פותח יומיים של אירועים. לכל אחד מהם הרשמה נפרדת.</p>
     <div class="evgrid">
-      <article class="ev" id="rooftop">
+      <article class="ev has-bg" id="rooftop" style="--evbg:url(banners/banner-rooftop-v1.0.jpg)">
         <div class="when" data-i18n="ev1_when">יום א׳ · 25.10 · <bdi dir="ltr">18:00–21:00</bdi></div>
         <div class="where" data-i18n="ev1_where">הגג · ליליינבלום 28, תל אביב</div>
         <h3 class="name" data-i18n="ev1_name">קוקטיילים על הגג + פאנל</h3>
@@ -328,7 +335,7 @@ footer .links a{color:var(--ink2)}
           <a class="btn" href="https://luma.com/web3devs-tz30" data-i18n="ev1_cta">RSVP לערב ←</a>
         </div>
       </article>
-      <article class="ev" id="mid-chain">
+      <article class="ev has-bg" id="mid-chain" style="--evbg:url(banners/banner-mid-chain-v1.0.jpg)">
         <div class="when" data-i18n="ev2_when">יום ב׳ · 26.10 · <bdi dir="ltr">08:45–18:00</bdi></div>
         <div class="where" data-i18n="ev2_where">אוניברסיטת בן-גוריון · אולם הסנאט, בניין 71, באר שבע</div>
         <h3 class="name" data-i18n="ev2_name"><bdi>Mid-Chain De-Fi Conference</bdi></h3>
