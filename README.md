@@ -1,4 +1,4 @@
-# Web3 Devs Office Hours — landing page (v4.5: English copy pass, phase-aware badges, event cards with banners, date-switched link preview)
+# Web3 Devs Office Hours — landing page (v5.0: final copy pass, waitlist-phase CTAs, HE/EN parity)
 
 Static landing page (`index.html`) + one booking page (`apply.html`, one host per URL) + two Vercel serverless functions that read/write the Notion databases. No third-party form tool.
 
